@@ -83,7 +83,7 @@ class LoggerMiddlewareFactory
             $this->frozen = true;
         }
 
-        $this->loggerMiddleware;
+        return $this->loggerMiddleware;
     }
 
     /**
