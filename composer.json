@@ -1,0 +1,42 @@
+{
+  "name": "jojo1981/guzzle-middlewares",
+  "description": "This library contains a collection of guzzle middlewares.",
+  "keywords": [
+    "guzzle",
+    "middleware",
+    "middlewares",
+    "logger",
+    "logs",
+    "event",
+    "events",
+    "dispatcher",
+    "capture"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "readme": "README.md",
+  "authors": [
+    {
+      "name": "Joost Nijhuis",
+      "email": "jnijhuis81@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^6.0",
+    "psr/log": "^1.1",
+    "symfony/event-dispatcher": "^4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jojo1981\\GuzzleMiddlewares\\": "src/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin",
+    "sort-packages": true
+  }
+}
