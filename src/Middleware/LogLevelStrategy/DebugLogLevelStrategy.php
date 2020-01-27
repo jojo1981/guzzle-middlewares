@@ -10,7 +10,7 @@
 namespace Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategy;
 
 use Jojo1981\GuzzleMiddlewares\Exception\InvalidValueException;
-use Jojo1981\GuzzleMiddlewares\MiddleWare\LogLevelStrategyInterface;
+use Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategyInterface;
 use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;

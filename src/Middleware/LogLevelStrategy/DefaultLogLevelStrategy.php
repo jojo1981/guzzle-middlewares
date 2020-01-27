@@ -7,16 +7,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed in the root of the source code
  */
-namespace Jojo1981\GuzzleMiddlewares\MiddleWare\LogLevelStrategy;
+namespace Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategy;
 
 use Jojo1981\GuzzleMiddlewares\Exception\InvalidValueException;
-use Jojo1981\GuzzleMiddlewares\MiddleWare\LogLevelStrategyInterface;
+use Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategyInterface;
 use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 /**
- * @package Jojo1981\GuzzleMiddlewares\MiddleWare\LogLevelStrategy
+ * @package Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategy
  */
 class DefaultLogLevelStrategy implements LogLevelStrategyInterface
 {

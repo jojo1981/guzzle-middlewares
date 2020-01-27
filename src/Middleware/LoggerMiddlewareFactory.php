@@ -12,7 +12,7 @@ namespace Jojo1981\GuzzleMiddlewares\Middleware;
 use Jojo1981\GuzzleMiddlewares\Exception\FactoryIsFrozenException;
 use Jojo1981\GuzzleMiddlewares\Formatter\MessageFormatterFactory;
 use Jojo1981\GuzzleMiddlewares\Formatter\MessageFormatterInterface;
-use Jojo1981\GuzzleMiddlewares\MiddleWare\LogLevelStrategy\DefaultLogLevelStrategy;
+use Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategy\DefaultLogLevelStrategy;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 

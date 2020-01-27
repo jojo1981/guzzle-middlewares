@@ -7,14 +7,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed in the root of the source code
  */
-namespace Jojo1981\GuzzleMiddlewares\MiddleWare;
+namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 /**
- * @package Jojo1981\GuzzleMiddlewares\MiddleWare
+ * @package Jojo1981\GuzzleMiddlewares\Middleware
  */
 interface LogLevelStrategyInterface
 {
