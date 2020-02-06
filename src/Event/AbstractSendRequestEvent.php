@@ -9,8 +9,8 @@
  */
 namespace Jojo1981\GuzzleMiddlewares\Event;
 
+use Jojo1981\GuzzleMiddlewares\Event;
 use Psr\Http\Message\RequestInterface;
-use Symfony\Component\EventDispatcher\Event;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Event
