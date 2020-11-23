@@ -10,6 +10,7 @@
 namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Closure;
+use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
 use Jojo1981\GuzzleMiddlewares\Event\AfterSendRequestFailedEvent;
 use Jojo1981\GuzzleMiddlewares\Event\AfterSendRequestSuccessEvent;
@@ -19,7 +20,6 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Throwable;
-use function GuzzleHttp\Promise\rejection_for;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Middleware
@@ -45,8 +45,8 @@ class EventDispatcherMiddleware
     {
         return function (RequestInterface $request, array $options) use ($handler) {
             $this->eventDispatcher->dispatch(
-                Events::EVENT_BEFORE_SEND_REQUEST,
-                new BeforeSendRequestEvent($request, $options)
+                new BeforeSendRequestEvent($request, $options),
+                Events::EVENT_BEFORE_SEND_REQUEST
             );
 
             return $handler($request, $options)->then(
@@ -65,8 +65,8 @@ class EventDispatcherMiddleware
     {
         return function (ResponseInterface $response) use ($request, $options): ResponseInterface {
             $this->eventDispatcher->dispatch(
-                Events::EVENT_AFTER_SEND_REQUEST_SUCCESS,
-                new AfterSendRequestSuccessEvent($request, $options, $response)
+                new AfterSendRequestSuccessEvent($request, $options, $response),
+                Events::EVENT_AFTER_SEND_REQUEST_SUCCESS
             );
 
             return $response;
@@ -82,11 +82,11 @@ class EventDispatcherMiddleware
     {
         return function (Throwable $reason) use ($request, $options): PromiseInterface {
             $this->eventDispatcher->dispatch(
-                Events::EVENT_AFTER_SEND_REQUEST_FAILED,
-                new AfterSendRequestFailedEvent($request, $options, $reason)
+                new AfterSendRequestFailedEvent($request, $options, $reason),
+                Events::EVENT_AFTER_SEND_REQUEST_FAILED
             );
 
-            return rejection_for($reason);
+            return Create::rejectionFor($reason);
         };
     }
 }
