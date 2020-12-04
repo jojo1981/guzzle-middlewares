@@ -42,6 +42,8 @@ class MemoryHttpDataStorage implements HttpDataStorageInterface
     public function setLastRequest(RequestInterface $lastRequest): void
     {
         $this->lastRequest = $lastRequest;
+        $this->lastResponse = null;
+        $this->lastReason = null;
     }
 
     /**
@@ -59,6 +61,7 @@ class MemoryHttpDataStorage implements HttpDataStorageInterface
     public function setLastResponse(ResponseInterface $lastResponse): void
     {
         $this->lastResponse = $lastResponse;
+        $this->lastReason = null;
     }
 
     /**
