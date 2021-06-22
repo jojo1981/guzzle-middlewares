@@ -15,6 +15,7 @@ use Jojo1981\GuzzleMiddlewares\Storage\WritableHttpDataStorageInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
+use function array_key_exists;
 use function GuzzleHttp\Promise\rejection_for;
 
 /**
@@ -40,35 +41,41 @@ class CaptureDataMiddleware
     public function __invoke(callable $handler): Closure
     {
         return function (RequestInterface $request, array $options) use ($handler) {
-            $this->httpDataStorage->clear();
-            $this->httpDataStorage->setLastRequest($request);
+            $saveRequestResponse = !array_key_exists('save_request_response', $options) || $options['save_request_response'];
+            if ($saveRequestResponse) {
+                $this->httpDataStorage->clear();
+                $this->httpDataStorage->setLastRequest($request);
+            }
 
-            return $handler($request, $options)->then(
-                $this->onSuccess(),
-                $this->onFailure()
-            );
+            return $handler($request, $options)->then($this->onSuccess($saveRequestResponse), $this->onFailure($saveRequestResponse));
         };
     }
 
     /**
+     * @param bool $saveRequestResponse
      * @return Closure
      */
-    private function onSuccess(): Closure
+    private function onSuccess(bool $saveRequestResponse): Closure
     {
-        return function (ResponseInterface $response): ResponseInterface {
-            $this->httpDataStorage->setLastResponse($response);
+        return function (ResponseInterface $response) use($saveRequestResponse): ResponseInterface {
+            if ($saveRequestResponse) {
+                $this->httpDataStorage->setLastResponse($response);
+            }
 
             return $response;
         };
     }
 
     /**
+     * @param bool $saveRequestResponse
      * @return Closure
      */
-    private function onFailure(): Closure
+    private function onFailure(bool $saveRequestResponse): Closure
     {
-        return function (Throwable $reason): PromiseInterface {
-            $this->httpDataStorage->setLastReason($reason);
+        return function (Throwable $reason) use($saveRequestResponse): PromiseInterface {
+            if ($saveRequestResponse) {
+                $this->httpDataStorage->setLastReason($reason);
+            }
 
             return rejection_for($reason);
         };
