@@ -11,6 +11,7 @@ namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Closure;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
 use Jojo1981\GuzzleMiddlewares\Formatter\MessageFormatterInterface;
 use Psr\Http\Message\RequestInterface;
@@ -18,7 +19,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Log\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Throwable;
-use function GuzzleHttp\Promise\rejection_for;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Middleware;
@@ -93,7 +93,7 @@ class LoggerMiddleware
                 $response->getBody()->seek(0);
             }
 
-            return rejection_for($reason);
+            return Create::rejectionFor($reason);
         };
     }
 

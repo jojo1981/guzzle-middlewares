@@ -14,6 +14,7 @@ use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use function date;
 use function gmdate;
+use function in_array;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
@@ -26,7 +27,7 @@ class DateProcessor implements ProcessorInterface
      */
     public function supports(string $key): bool
     {
-        return \in_array($key, ['date_common_log', 'date_iso_8601', 'ts'], true);
+        return in_array($key, ['date_common_log', 'date_iso_8601', 'ts'], true);
     }
 
     /**

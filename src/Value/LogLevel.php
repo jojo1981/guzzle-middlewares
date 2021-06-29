@@ -33,7 +33,7 @@ final class LogLevel
      */
     public function __construct(string $value)
     {
-        $value = static::normalizeValue($value);
+        $value = self::normalizeValue($value);
         $this->assertValue($value);
         $this->value = $value;
     }
@@ -45,11 +45,11 @@ final class LogLevel
      */
     private function assertValue(string $value): void
     {
-        if (!static::isValidValue($value)) {
+        if (!self::isValidValue($value)) {
             throw new InvalidValueException(sprintf(
                 'Invalid log level value given: `%s`. Expect one of [%s]',
                 $value,
-                implode(', ', static::getValidValues())
+                implode(', ', self::getValidValues())
             ));
         }
     }
@@ -76,7 +76,7 @@ final class LogLevel
      */
     public function getNumericValue(): int
     {
-        return array_flip(static::getValidValues())[$this->value];
+        return array_flip(self::getValidValues())[$this->value];
     }
 
     /**
@@ -145,66 +145,66 @@ final class LogLevel
 
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function emergency(): LogLevel
     {
-        return new static('emergency');
+        return new self('emergency');
     }
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function alert(): LogLevel
     {
-        return new static('alert');
+        return new self('alert');
     }
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function critical(): LogLevel
     {
-        return new static('critical');
+        return new self('critical');
     }
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function error(): LogLevel
     {
-        return new static('error');
+        return new self('error');
     }
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function warning(): LogLevel
     {
-        return new static('warning');
+        return new self('warning');
     }
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function notice(): LogLevel
     {
-        return new static('notice');
+        return new self('notice');
     }
 
     /**
-     * @throws InvalidValueException
      * @return LogLevel
+     * @throws InvalidValueException
      */
     public static function info(): LogLevel
     {
-        return new static('info');
+        return new self('info');
     }
 
     /**
@@ -213,7 +213,7 @@ final class LogLevel
      */
     public static function debug(): LogLevel
     {
-        return new static('debug');
+        return new self('debug');
     }
 
     /**
@@ -222,14 +222,14 @@ final class LogLevel
     public static function getValidValues(): array
     {
         return [
-            600 => 'emergency',
-            550 => 'alert',
-            500 => 'critical',
-            400 => 'error',
-            300 => 'warning',
-            250 => 'notice',
+            100 => 'debug',
             200 => 'info',
-            100 => 'debug'
+            250 => 'notice',
+            300 => 'warning',
+            400 => 'error',
+            500 => 'critical',
+            550 => 'alert',
+            600 => 'emergency'
         ];
     }
 
@@ -239,7 +239,7 @@ final class LogLevel
      */
     public static function isValidValue(string $value): bool
     {
-        return in_array(static::normalizeValue($value), static::getValidValues(), true);
+        return in_array(self::normalizeValue($value), self::getValidValues(), true);
     }
 
     /**

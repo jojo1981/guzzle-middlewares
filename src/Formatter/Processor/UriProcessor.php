@@ -12,6 +12,7 @@ namespace Jojo1981\GuzzleMiddlewares\Formatter\Processor;
 use Jojo1981\GuzzleMiddlewares\Formatter\ProcessorInterface;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use function in_array;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
@@ -24,7 +25,7 @@ class UriProcessor implements ProcessorInterface
      */
     public function supports(string $key): bool
     {
-        return \in_array($key, ['uri', 'url'], true);
+        return in_array($key, ['uri', 'url'], true);
     }
 
     /**

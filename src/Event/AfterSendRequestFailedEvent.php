@@ -20,7 +20,7 @@ class AfterSendRequestFailedEvent extends AbstractSendRequestEvent
     /** @var string */
     public const NAME = 'event.http_client.after_send_request.failed';
 
-    /** @var \Exception */
+    /** @var Throwable */
     private $exception;
 
     /**

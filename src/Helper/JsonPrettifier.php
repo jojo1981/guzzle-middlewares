@@ -9,6 +9,9 @@
  */
 namespace Jojo1981\GuzzleMiddlewares\Helper;
 
+use function json_decode;
+use function json_encode;
+
 /**
  * @package Jojo1981\GuzzleMiddlewares\Helper
  */
@@ -32,8 +35,8 @@ final class JsonPrettifier
             return $jsonString;
         }
 
-        $data = \json_decode($jsonString, false);
+        $data = json_decode($jsonString, false);
 
-        return null !== $data ? \json_encode($data, JSON_PRETTY_PRINT) : $jsonString;
+        return null !== $data ? json_encode($data, JSON_PRETTY_PRINT) : $jsonString;
     }
 }

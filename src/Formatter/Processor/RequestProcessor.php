@@ -9,10 +9,11 @@
  */
 namespace Jojo1981\GuzzleMiddlewares\Formatter\Processor;
 
+use GuzzleHttp\Psr7\Message;
+use InvalidArgumentException;
 use Jojo1981\GuzzleMiddlewares\Formatter\ProcessorInterface;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use function GuzzleHttp\Psr7\str as psr7Str;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
@@ -33,11 +34,11 @@ class RequestProcessor implements ProcessorInterface
      * @param Request $request
      * @param null|Response $response
      * @param null|string $reason
-     * @throws \InvalidArgumentException
      * @return string
+     * @throws InvalidArgumentException
      */
     public function process(string $key, Request $request, ?Response $response = null, ?string $reason = null): string
     {
-        return psr7Str($request);
+        return Message::toString($request);
     }
 }

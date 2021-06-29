@@ -15,6 +15,7 @@ use Jojo1981\GuzzleMiddlewares\Helper\JsonPrettifier;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\StreamInterface as Stream;
+use RuntimeException;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\Processor
@@ -27,7 +28,7 @@ abstract class AbstractBodyProcessor implements ProcessorInterface
      * @param null|Response $response
      * @param null|string $reason
      * @return string
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     final public function process(string $key, Request $request, ?Response $response = null, ?string $reason = null): string
     {
@@ -55,7 +56,7 @@ abstract class AbstractBodyProcessor implements ProcessorInterface
 
     /**
      * @param Stream $httpMessage
-     * @throws \RuntimeException
+     * @throws RuntimeException
      * @return string
      */
     private function parseStream(Stream $httpMessage): string

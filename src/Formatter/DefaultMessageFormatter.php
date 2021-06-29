@@ -12,6 +12,7 @@ namespace Jojo1981\GuzzleMiddlewares\Formatter;
 use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use RuntimeException;
 use function preg_replace_callback;
 use function strpos;
 use function substr;
@@ -67,7 +68,7 @@ class DefaultMessageFormatter implements MessageFormatterInterface
      * @param Request $request
      * @param null|Response $response
      * @param null|string $reason
-     * @throws \RuntimeException
+     * @throws RuntimeException
      * @return string
      */
     public function format(
@@ -108,7 +109,7 @@ class DefaultMessageFormatter implements MessageFormatterInterface
     /**
      * @param Request $request
      * @param null|Response $response
-     * @throws \RuntimeException
+     * @throws RuntimeException
      * @return void
      */
     private function rewindRequestAndResponse(Request $request, ?Response $response = null): void
