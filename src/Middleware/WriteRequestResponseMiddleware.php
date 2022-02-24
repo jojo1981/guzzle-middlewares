@@ -112,7 +112,7 @@ final class WriteRequestResponseMiddleware
      */
     private function writeContent(string $content): void
     {
-        $filename = str_pad((string) $this->counter, 5, '0', STR_PAD_LEFT);
+        $filename = str_pad((string) $this->counter, 5, '0', STR_PAD_LEFT) . '.txt';
         $this->requestResponseWriter->write($filename, $content);
     }
 }
