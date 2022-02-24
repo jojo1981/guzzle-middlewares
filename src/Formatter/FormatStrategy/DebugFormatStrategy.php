@@ -17,7 +17,7 @@ use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\FormatStrategy
  */
-class DebugFormatStrategy implements FormatStrategyInterface
+final class DebugFormatStrategy implements FormatStrategyInterface
 {
     /**
      * @param LogLevel $logLevel

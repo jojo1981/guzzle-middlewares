@@ -17,7 +17,7 @@ use function gethostname;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class HostnameProcessor implements ProcessorInterface
+final class HostnameProcessor implements ProcessorInterface
 {
     /**
      * @param string $key

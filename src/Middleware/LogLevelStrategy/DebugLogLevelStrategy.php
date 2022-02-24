@@ -18,7 +18,7 @@ use Throwable;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Middleware\LogLevelStrategy
  */
-class DebugLogLevelStrategy implements LogLevelStrategyInterface
+final class DebugLogLevelStrategy implements LogLevelStrategyInterface
 {
     /**
      * @param ResponseInterface $response

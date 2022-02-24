@@ -17,10 +17,10 @@ use Psr\Http\Message\StreamInterface as Stream;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class ResponseBodyProcessor extends AbstractBodyProcessor
+final class ResponseBodyProcessor extends AbstractBodyProcessor
 {
     /** @var FormatStrategy */
-    private $formatStrategy;
+    private FormatStrategy $formatStrategy;
 
     /**
      * @param FormatStrategy $formatStrategy

@@ -19,7 +19,7 @@ use function in_array;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class DateProcessor implements ProcessorInterface
+final class DateProcessor implements ProcessorInterface
 {
     /**
      * @param string $key

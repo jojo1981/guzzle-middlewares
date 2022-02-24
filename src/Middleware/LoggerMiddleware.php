@@ -23,16 +23,16 @@ use Throwable;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Middleware;
  */
-class LoggerMiddleware
+final class LoggerMiddleware
 {
     /** @var LoggerInterface */
-    private $logger;
+    private LoggerInterface $logger;
 
     /** @var MessageFormatterInterface */
-    private $formatter;
+    private MessageFormatterInterface $formatter;
 
     /** @var LogLevelStrategyInterface */
-    private $logLevelStrategy;
+    private LogLevelStrategyInterface $logLevelStrategy;
 
     /**
      * @param LoggerInterface $logger

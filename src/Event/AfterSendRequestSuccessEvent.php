@@ -15,13 +15,13 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Event
  */
-class AfterSendRequestSuccessEvent extends AbstractSendRequestEvent
+final class AfterSendRequestSuccessEvent extends AbstractSendRequestEvent
 {
     /** @var string */
     public const NAME = 'event.http_client.after_send_request.success';
 
     /** @var ResponseInterface */
-    private $response;
+    private ResponseInterface $response;
 
     /**
      * @param RequestInterface $request

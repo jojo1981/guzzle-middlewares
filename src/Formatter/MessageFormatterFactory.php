@@ -17,17 +17,17 @@ use Jojo1981\GuzzleMiddlewares\Formatter\FormatStrategy\DefaultFormatStrategy;
  */
 class MessageFormatterFactory
 {
-    /** @var FormatStrategyInterface */
-    private $formatStrategy;
+    /** @var FormatStrategyInterface|null */
+    private ?FormatStrategyInterface $formatStrategy = null;
 
-    /** @var ProcessorInterface */
-    private $processor;
+    /** @var ProcessorInterface|null */
+    private ?ProcessorInterface $processor = null;
 
-    /** @var MessageFormatterInterface */
-    private $messageFormatter;
+    /** @var MessageFormatterInterface|null */
+    private ?MessageFormatterInterface $messageFormatter = null;
 
     /** @var bool */
-    private $frozen = false;
+    private bool $frozen = false;
 
     /**
      * @param FormatStrategyInterface $formatStrategy

@@ -24,10 +24,10 @@ use Throwable;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Middleware
  */
-class EventDispatcherMiddleware
+final class EventDispatcherMiddleware
 {
     /** @var EventDispatcherInterface */
-    private $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
     /**
      * @param EventDispatcherInterface $eventDispatcher

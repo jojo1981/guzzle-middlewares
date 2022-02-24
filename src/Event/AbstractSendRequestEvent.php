@@ -18,10 +18,10 @@ use Psr\Http\Message\RequestInterface;
 abstract class AbstractSendRequestEvent extends Event
 {
     /** @var RequestInterface */
-    private $request;
+    private RequestInterface $request;
 
     /** @var array */
-    private $options;
+    private array $options;
 
     /**
      * @param RequestInterface $request

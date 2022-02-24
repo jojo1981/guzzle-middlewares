@@ -16,7 +16,7 @@ use function sprintf;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class ResponseHeadersProcessor extends AbstractHeadersProcessor
+final class ResponseHeadersProcessor extends AbstractHeadersProcessor
 {
     /**
      * @param string $key

@@ -21,10 +21,10 @@ use function array_key_exists;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Middleware
  */
-class CaptureDataMiddleware
+final class CaptureDataMiddleware
 {
     /** @var WritableHttpDataStorageInterface */
-    private $httpDataStorage;
+    private WritableHttpDataStorageInterface $httpDataStorage;
 
     /**
      * @param WritableHttpDataStorageInterface $httpDataStorage

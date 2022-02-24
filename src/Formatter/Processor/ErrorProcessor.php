@@ -16,7 +16,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class ErrorProcessor implements ProcessorInterface
+final class ErrorProcessor implements ProcessorInterface
 {
     /**
      * @param string $key

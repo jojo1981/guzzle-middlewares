@@ -45,13 +45,13 @@ use function substr;
  *
  * @package Jojo1981\GuzzleMiddlewares\Formatter
  */
-class DefaultMessageFormatter implements MessageFormatterInterface
+final class DefaultMessageFormatter implements MessageFormatterInterface
 {
     /** @var FormatStrategyInterface */
-    private $formatStrategy;
+    private FormatStrategyInterface $formatStrategy;
 
     /** @var ProcessorInterface */
-    private $processor;
+    private ProcessorInterface $processor;
 
     /**
      * @param FormatStrategyInterface $formatStrategy

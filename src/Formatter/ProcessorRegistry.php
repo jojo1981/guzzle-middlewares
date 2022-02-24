@@ -35,13 +35,13 @@ use function sprintf;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter
  */
-class ProcessorRegistry implements ProcessorInterface
+final class ProcessorRegistry implements ProcessorInterface
 {
     /** @var ProcessorInterface[] */
-    private $processors;
+    private array $processors;
 
     /** @var bool */
-    private $defaultProcessorsAdded = false;
+    private bool $defaultProcessorsAdded = false;
 
     /**
      * @param ProcessorInterface $processor

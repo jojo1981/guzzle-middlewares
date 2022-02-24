@@ -12,7 +12,7 @@ namespace Jojo1981\GuzzleMiddlewares\Event;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Event
  */
-class BeforeSendRequestEvent extends AbstractSendRequestEvent
+final class BeforeSendRequestEvent extends AbstractSendRequestEvent
 {
     /** @var string */
     public const NAME = 'event.http_client.before_send_request';

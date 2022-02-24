@@ -16,13 +16,13 @@ use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\FormatStrategy
  */
-class ConfigurableFormatStrategy implements FormatStrategyInterface
+final class ConfigurableFormatStrategy implements FormatStrategyInterface
 {
     /** @var FormatInterface */
-    private $format;
+    private FormatInterface $format;
 
     /** @var bool */
-    private $prettifyJsonBody;
+    private bool $prettifyJsonBody;
 
     /**
      * @param FormatInterface $format

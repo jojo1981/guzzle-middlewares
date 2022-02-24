@@ -17,7 +17,7 @@ use function trim;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class RequestHeadersProcessor extends AbstractHeadersProcessor
+final class RequestHeadersProcessor extends AbstractHeadersProcessor
 {
     /**
      * @param string $key

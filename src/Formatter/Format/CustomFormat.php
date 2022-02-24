@@ -14,10 +14,10 @@ use Jojo1981\GuzzleMiddlewares\Formatter\FormatInterface;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\Format
  */
-class CustomFormat implements FormatInterface
+final class CustomFormat implements FormatInterface
 {
     /** @var string */
-    private $pattern;
+    private string $pattern;
 
     /**
      * @param string $pattern

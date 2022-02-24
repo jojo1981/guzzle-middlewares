@@ -20,10 +20,10 @@ use Jojo1981\GuzzleMiddlewares\Value\LogLevel;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\FormatStrategy
  */
-class DefaultFormatStrategy implements FormatStrategyInterface
+final class DefaultFormatStrategy implements FormatStrategyInterface
 {
     /** @var bool */
-    private $prettifyJsonBody;
+    private bool $prettifyJsonBody;
 
     /**
      * @param bool $prettifyJsonBody

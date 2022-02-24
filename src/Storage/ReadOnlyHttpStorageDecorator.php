@@ -22,7 +22,7 @@ use Throwable;
 class ReadOnlyHttpStorageDecorator implements ReadOnlyHttpDataStorageInterface
 {
     /** @var HttpDataStorageInterface */
-    private $httpDataStorage;
+    private HttpDataStorageInterface $httpDataStorage;
 
     /**
      * @param HttpDataStorageInterface $httpDataStorage

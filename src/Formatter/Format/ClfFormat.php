@@ -14,7 +14,7 @@ use Jojo1981\GuzzleMiddlewares\Formatter\FormatInterface;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\Format
  */
-class ClfFormat implements FormatInterface
+final class ClfFormat implements FormatInterface
 {
     /**
      * @return string

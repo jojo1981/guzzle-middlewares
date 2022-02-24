@@ -16,16 +16,16 @@ use Throwable;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Storage
  */
-class MemoryHttpDataStorage implements HttpDataStorageInterface
+final class MemoryHttpDataStorage implements HttpDataStorageInterface
 {
     /** @var null|RequestInterface */
-    private $lastRequest;
+    private ?RequestInterface $lastRequest;
 
     /** @var null|ResponseInterface */
-    private $lastResponse;
+    private ?ResponseInterface $lastResponse;
 
     /** @var null|Throwable */
-    private $lastReason;
+    private ?Throwable $lastReason;
 
     /**
      * @return null|RequestInterface

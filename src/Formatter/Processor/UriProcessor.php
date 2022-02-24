@@ -17,7 +17,7 @@ use function in_array;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Formatter\SegmentFormatter
  */
-class UriProcessor implements ProcessorInterface
+final class UriProcessor implements ProcessorInterface
 {
     /**
      * @param string $key

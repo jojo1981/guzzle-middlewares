@@ -15,13 +15,13 @@ use Throwable;
 /**
  * @package Jojo1981\GuzzleMiddlewares\Event
  */
-class AfterSendRequestFailedEvent extends AbstractSendRequestEvent
+final class AfterSendRequestFailedEvent extends AbstractSendRequestEvent
 {
     /** @var string */
     public const NAME = 'event.http_client.after_send_request.failed';
 
     /** @var Throwable */
-    private $exception;
+    private Throwable $exception;
 
     /**
      * @param RequestInterface $request

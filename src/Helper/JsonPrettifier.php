@@ -9,6 +9,7 @@
  */
 namespace Jojo1981\GuzzleMiddlewares\Helper;
 
+use Throwable;
 use function json_decode;
 use function json_encode;
 
@@ -35,8 +36,15 @@ final class JsonPrettifier
             return $jsonString;
         }
 
-        $data = json_decode($jsonString, false);
+        try {
+            return json_encode(
+                json_decode($jsonString, false, 512, JSON_THROW_ON_ERROR),
+                JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_PRESERVE_ZERO_FRACTION
+            );
+        } catch (Throwable $exception) {
+            // Nothing to do here, just catch
+        }
 
-        return null !== $data ? json_encode($data, JSON_PRETTY_PRINT) : $jsonString;
+        return $jsonString;
     }
 }
