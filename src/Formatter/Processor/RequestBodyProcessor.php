@@ -43,9 +43,9 @@ final class RequestBodyProcessor extends AbstractBodyProcessor
      * @param Request $request
      * @param Response|null $response
      * @param string|null $reason
-     * @return null|Stream
+     * @return Stream
      */
-    protected function getStream(Request $request, ?Response $response = null, ?string $reason = null): ?Stream
+    protected function getStream(Request $request, ?Response $response = null, ?string $reason = null): Stream
     {
         return $request->getBody();
     }
