@@ -99,7 +99,7 @@ final class LoggerMiddleware
 
     /**
      * @param RequestInterface $request
-     * @param null|ResponseInterface $response
+     * @param ResponseInterface $response
      * @throws InvalidArgumentException
      * @return void
      */

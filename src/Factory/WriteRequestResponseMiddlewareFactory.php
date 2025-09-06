@@ -81,7 +81,7 @@ final class WriteRequestResponseMiddlewareFactory
     /**
      * @return HttpMessageFormatterInterface
      */
-    private function getHttpMessageFormatter(): ?HttpMessageFormatterInterface
+    private function getHttpMessageFormatter(): HttpMessageFormatterInterface
     {
         if (null === $this->httpMessageFormatter) {
             return new DefaultHttpMessageFormatter();
@@ -93,7 +93,7 @@ final class WriteRequestResponseMiddlewareFactory
     /**
      * @return RequestResponseWriterInterface
      */
-    private function getRequestResponseWriter(): ?RequestResponseWriterInterface
+    private function getRequestResponseWriter(): RequestResponseWriterInterface
     {
         if (null === $this->requestResponseWriter) {
             return new DefaultRequestResponseWriter($this->path, new Filesystem());
