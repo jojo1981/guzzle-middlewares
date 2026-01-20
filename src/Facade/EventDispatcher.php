@@ -13,19 +13,20 @@ namespace Jojo1981\GuzzleMiddlewares\Facade;
 
 use Jojo1981\GuzzleMiddlewares\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher as BaseEventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface as BaseEventDispatcherInterface;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Facade
  */
 final class EventDispatcher implements EventDispatcherInterface
 {
-    /** @var BaseEventDispatcher */
-    private BaseEventDispatcher $eventDispatcher;
+    /** @var BaseEventDispatcherInterface */
+    private BaseEventDispatcherInterface $eventDispatcher;
 
     /**
-     * @param BaseEventDispatcher|null $eventDispatcher
+     * @param BaseEventDispatcherInterface|null $eventDispatcher
      */
-    public function __construct(?BaseEventDispatcher $eventDispatcher = null)
+    public function __construct(?BaseEventDispatcherInterface $eventDispatcher = null)
     {
         $this->eventDispatcher = $eventDispatcher ?? new BaseEventDispatcher();
     }
