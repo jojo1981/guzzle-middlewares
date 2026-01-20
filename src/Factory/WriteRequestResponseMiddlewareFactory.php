@@ -10,12 +10,12 @@
 namespace Jojo1981\GuzzleMiddlewares\Factory;
 
 use Jojo1981\GuzzleMiddlewares\Exception\FactoryIsFrozenException;
+use Jojo1981\GuzzleMiddlewares\Facade\Filesystem;
 use Jojo1981\GuzzleMiddlewares\Middleware\WriteRequestResponseMiddleware;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\HttpMessageFormatter\DefaultHttpMessageFormatter;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\HttpMessageFormatterInterface;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\RequestResponseWriter\DefaultRequestResponseWriter;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\RequestResponseWriterInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @package Jojo1981\GuzzleMiddlewares\Factory
