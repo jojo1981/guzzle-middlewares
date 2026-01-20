@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of the jojo1981/guzzle-middlewares package
  *
@@ -7,6 +7,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed in the root of the source code
  */
+declare(strict_types=1);
+
 namespace Jojo1981\GuzzleMiddlewares\Facade;
 
 use Jojo1981\GuzzleMiddlewares\Exception\IOException;
@@ -29,11 +31,11 @@ final class Filesystem implements FilesystemInterface
     private BaseFilesystem $filesystem;
 
     /**
-     * Constructor
+     * @param BaseFilesystem|null $filesystem
      */
-    public function __construct()
+    public function __construct(?BaseFilesystem $filesystem = null)
     {
-        $this->filesystem = new BaseFilesystem();
+        $this->filesystem = $filesystem ?? new BaseFilesystem();
     }
 
     /**

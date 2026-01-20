@@ -13,6 +13,9 @@ namespace Jojo1981\GuzzleMiddlewares;
 
 use Jojo1981\GuzzleMiddlewares\Exception\IOException;
 
+/**
+ * @package Jojo1981\GuzzleMiddlewares
+ */
 interface FilesystemInterface
 {
     /**

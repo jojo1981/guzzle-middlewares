@@ -15,10 +15,11 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Jojo1981\GuzzleMiddlewares\Event\AfterSendRequestFailedEvent;
 use Jojo1981\GuzzleMiddlewares\Event\AfterSendRequestSuccessEvent;
 use Jojo1981\GuzzleMiddlewares\Event\BeforeSendRequestEvent;
+use Jojo1981\GuzzleMiddlewares\EventDispatcherInterface;
 use Jojo1981\GuzzleMiddlewares\Events;
+use Jojo1981\GuzzleMiddlewares\Facade\EventDispatcher;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Throwable;
 
 /**
@@ -30,11 +31,11 @@ final class EventDispatcherMiddleware
     private EventDispatcherInterface $eventDispatcher;
 
     /**
-     * @param EventDispatcherInterface $eventDispatcher
+     * @param EventDispatcherInterface|null $eventDispatcher
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    public function __construct(?EventDispatcherInterface $eventDispatcher = null)
     {
-        $this->eventDispatcher = $eventDispatcher;
+        $this->eventDispatcher = $eventDispatcher ?? new EventDispatcher();
     }
 
     /**

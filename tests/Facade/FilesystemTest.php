@@ -23,6 +23,9 @@ use function mkdir;
 use function rmdir;
 use function unlink;
 
+/**
+ * @package Tests\Jojo1981\GuzzleMiddlewares\Facade
+ */
 final class FilesystemTest extends TestCase
 {
     /** @var string */
