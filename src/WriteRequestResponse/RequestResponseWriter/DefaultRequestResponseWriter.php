@@ -10,11 +10,11 @@
 namespace Jojo1981\GuzzleMiddlewares\WriteRequestResponse\RequestResponseWriter;
 
 use FilesystemIterator;
+use Jojo1981\GuzzleMiddlewares\Exception\IOException;
+use Jojo1981\GuzzleMiddlewares\FilesystemInterface;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\RequestResponseWriterInterface;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use Symfony\Component\Filesystem\Exception\IOException;
-use Symfony\Component\Filesystem\Filesystem;
 use UnexpectedValueException;
 use function rtrim;
 
@@ -26,17 +26,17 @@ final class DefaultRequestResponseWriter implements RequestResponseWriterInterfa
     /** @var string */
     private string $path;
 
-    /** @var Filesystem */
-    private Filesystem $filesystem;
+    /** @var FilesystemInterface */
+    private FilesystemInterface $filesystem;
 
     /** @var bool */
     private bool $prepared = false;
 
     /**
      * @param string $path
-     * @param Filesystem $filesystem
+     * @param FilesystemInterface $filesystem
      */
-    public function __construct(string $path, Filesystem $filesystem)
+    public function __construct(string $path, FilesystemInterface $filesystem)
     {
         $this->path = rtrim($path, DIRECTORY_SEPARATOR);
         $this->filesystem = $filesystem;
