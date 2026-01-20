@@ -21,55 +21,55 @@ jobs:
 
           # PHP 8.1
           - php-version: "8.1"
-            symfony-filesystem-version: "^4.0"
+            symfony-component-version: "^4.0"
           - php-version: "8.1"
-            symfony-filesystem-version: "^5.0"
+            symfony-component-version: "^5.0"
           - php-version: "8.1"
-            symfony-filesystem-version: "^6.0"
+            symfony-component-version: "^6.0"
 
           # PHP 8.2
           - php-version: "8.2"
-            symfony-filesystem-version: "^4.0"
+            symfony-component-version: "^4.0"
           - php-version: "8.2"
-            symfony-filesystem-version: "^5.0"
+            symfony-component-version: "^5.0"
           - php-version: "8.2"
-            symfony-filesystem-version: "^6.0"
+            symfony-component-version: "^6.0"
           - php-version: "8.2"
-            symfony-filesystem-version: "^7.0"
+            symfony-component-version: "^7.0"
 
           # PHP 8.3
           - php-version: "8.3"
-            symfony-filesystem-version: "^4.0"
+            symfony-component-version: "^4.0"
           - php-version: "8.3"
-            symfony-filesystem-version: "^5.0"
+            symfony-component-version: "^5.0"
           - php-version: "8.3"
-            symfony-filesystem-version: "^6.0"
+            symfony-component-version: "^6.0"
           - php-version: "8.3"
-            symfony-filesystem-version: "^7.0"
+            symfony-component-version: "^7.0"
 
           # PHP 8.4
           - php-version: "8.4"
-            symfony-filesystem-version: "^4.0"
+            symfony-component-version: "^4.0"
           - php-version: "8.4"
-            symfony-filesystem-version: "^5.0"
+            symfony-component-version: "^5.0"
           - php-version: "8.4"
-            symfony-filesystem-version: "^6.0"
+            symfony-component-version: "^6.0"
           - php-version: "8.4"
-            symfony-filesystem-version: "^7.0"
+            symfony-component-version: "^7.0"
           - php-version: "8.4"
-            symfony-filesystem-version: "^8.0"
+            symfony-component-version: "^8.0"
 
           # PHP 8.5
           - php-version: "8.5"
-            symfony-filesystem-version: "^4.0"
+            symfony-component-version: "^4.0"
           - php-version: "8.5"
-            symfony-filesystem-version: "^5.0"
+            symfony-component-version: "^5.0"
           - php-version: "8.5"
-            symfony-filesystem-version: "^6.0"
+            symfony-component-version: "^6.0"
           - php-version: "8.5"
-            symfony-filesystem-version: "^7.0"
+            symfony-component-version: "^7.0"
           - php-version: "8.5"
-            symfony-filesystem-version: "^8.0"
+            symfony-component-version: "^8.0"
 
     steps:
       - uses: actions/checkout@v4
@@ -95,7 +95,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require symfony/filesystem:${{ matrix.symfony-filesystem-version }} --no-update
+          composer require symfony/filesystem:${{ matrix.symfony-component-version }} --no-update
+          composer require symfony/event-dispatcher:${{ matrix.symfony-component-version }} --no-update
           composer install --prefer-dist --no-progress
 
       - name: Lint PHP files
