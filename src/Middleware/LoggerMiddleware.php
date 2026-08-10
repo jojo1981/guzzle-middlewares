@@ -10,9 +10,8 @@
 namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Closure;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Promise\RejectedPromise;
 use Jojo1981\GuzzleMiddlewares\Formatter\MessageFormatterInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -85,16 +84,36 @@ final class LoggerMiddleware
     private function onFailure(RequestInterface $request): Closure
     {
         return function (Throwable $reason) use ($request): PromiseInterface {
-            $response = $reason instanceof RequestException ? $reason->getResponse() : null;
+            $response = $this->getResponseFromReason($reason);
             $this->logFailed($request, $reason, $response);
 
             // Make sure that the content of the body is available again.
-            if (null !== $response) {
-                $response->getBody()->seek(0);
-            }
+            $response?->getBody()->seek(0);
 
-            return Create::rejectionFor($reason);
+            return new RejectedPromise($reason);
         };
+    }
+
+    /**
+     * Guzzle carries the response on a different exception per major version. In guzzle 6 and 7
+     * RequestException::getResponse() exists, in guzzle 8 it was removed and the response moved
+     * to the new ResponseException (a RequestException subclass). Resolving the method at runtime
+     * keeps this compatible with all supported versions, without naming a class that only exists
+     * in some of them.
+     *
+     * @param Throwable $reason
+     * @return null|ResponseInterface
+     */
+    private function getResponseFromReason(Throwable $reason): ?ResponseInterface
+    {
+        $getResponse = [$reason, 'getResponse'];
+        if (!is_callable($getResponse)) {
+            return null;
+        }
+
+        $response = $getResponse();
+
+        return $response instanceof ResponseInterface ? $response : null;
     }
 
     /**

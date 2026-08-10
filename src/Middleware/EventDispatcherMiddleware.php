@@ -10,8 +10,8 @@
 namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Closure;
-use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Promise\RejectedPromise;
 use Jojo1981\GuzzleMiddlewares\Event\AfterSendRequestFailedEvent;
 use Jojo1981\GuzzleMiddlewares\Event\AfterSendRequestSuccessEvent;
 use Jojo1981\GuzzleMiddlewares\Event\BeforeSendRequestEvent;
@@ -87,7 +87,7 @@ final class EventDispatcherMiddleware
                 Events::EVENT_AFTER_SEND_REQUEST_FAILED
             );
 
-            return Create::rejectionFor($reason);
+            return new RejectedPromise($reason);
         };
     }
 }
