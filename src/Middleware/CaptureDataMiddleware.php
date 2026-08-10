@@ -10,8 +10,8 @@
 namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Closure;
-use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Promise\RejectedPromise;
 use Jojo1981\GuzzleMiddlewares\Storage\WritableHttpDataStorageInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -77,7 +77,7 @@ final class CaptureDataMiddleware
                 $this->httpDataStorage->setLastReason($reason);
             }
 
-            return Create::rejectionFor($reason);
+            return new RejectedPromise($reason);
         };
     }
 }

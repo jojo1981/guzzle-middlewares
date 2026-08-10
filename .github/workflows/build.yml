@@ -14,6 +14,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      # guzzlehttp/guzzle 6.x is EOL. Several advisories against it have no lower bound
+      # (e.g. CVE-2026-69245 "<7.15.2", CVE-2026-67353 "<7.15.1"), so every 6.x release
+      # matches and Composer >= 2.10 refuses to install it. Unblock this for the ^6.0 jobs
+      # only, so the matrix can still verify guzzle 6 support; ^7.0/^8.0 keep blocking on.
+      COMPOSER_POLICY_ADVISORIES_BLOCK: ${{ matrix.guzzlehttp-guzzle-component-version == '^6.0' && 'false' || 'true' }}
+
     strategy:
       fail-fast: false
       matrix:
@@ -22,57 +29,220 @@ jobs:
           # PHP 8.1
           - php-version: "8.1"
             symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.1"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.1"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.1"
             symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.1"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.1"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.1"
             symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.1"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.1"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
 
           # PHP 8.2
           - php-version: "8.2"
             symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.2"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.2"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.2"
             symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.2"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.2"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.2"
             symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.2"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.2"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.2"
             symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.2"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.2"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
 
           # PHP 8.3
           - php-version: "8.3"
             symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.3"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.3"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.3"
             symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.3"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.3"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.3"
             symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.3"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.3"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.3"
             symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.3"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.3"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
 
           # PHP 8.4
           - php-version: "8.4"
             symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.4"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.4"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.4"
             symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.4"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.4"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.4"
             symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.4"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.4"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.4"
             symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.4"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.4"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.4"
             symfony-component-version: "^8.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.4"
+            symfony-component-version: "^8.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.4"
+            symfony-component-version: "^8.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
 
           # PHP 8.5
           - php-version: "8.5"
             symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.5"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.5"
+            symfony-component-version: "^4.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.5"
             symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.5"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.5"
+            symfony-component-version: "^5.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.5"
             symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.5"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.5"
+            symfony-component-version: "^6.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.5"
             symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.5"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.5"
+            symfony-component-version: "^7.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
+
           - php-version: "8.5"
             symfony-component-version: "^8.0"
+            guzzlehttp-guzzle-component-version: "^6.0"
+          - php-version: "8.5"
+            symfony-component-version: "^8.0"
+            guzzlehttp-guzzle-component-version: "^7.0"
+          - php-version: "8.5"
+            symfony-component-version: "^8.0"
+            guzzlehttp-guzzle-component-version: "^8.0"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -86,17 +256,21 @@ jobs:
 
       - name: Cache Composer packages
         id: composer-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          # composer.lock is not committed, so hashFiles() matches nothing and cannot
+          # distinguish the matrix combinations. Key on the dependency versions instead,
+          # otherwise all jobs sharing a PHP version restore each other's vendor dir.
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-sf-${{ matrix.symfony-component-version }}-guzzle-${{ matrix.guzzlehttp-guzzle-component-version }}
           restore-keys: |
-            ${{ runner.os }}-php-${{ matrix.php-version }}-
+            ${{ runner.os }}-php-${{ matrix.php-version }}-sf-${{ matrix.symfony-component-version }}-
 
       - name: Install dependencies
         run: |
           composer require symfony/filesystem:${{ matrix.symfony-component-version }} --no-update
           composer require symfony/event-dispatcher:${{ matrix.symfony-component-version }} --no-update
+          composer require guzzlehttp/guzzle:${{ matrix.guzzlehttp-guzzle-component-version }} --no-update
           composer install --prefer-dist --no-progress
 
       - name: Lint PHP files
@@ -104,6 +278,14 @@ jobs:
           find . -type f -name '*.php' -not -path './vendor/*' -not -path './var/*' -print0 | while IFS= read -r -d '' file; do
             php -l "$file"
           done
+
+      - name: Tests (PHPUnit)
+        env:
+          # phpunit.xml.dist configures coverage reports, and PHPUnit runs no tests at all (exiting
+          # 1) when no coverage driver is active. setup-php installs xdebug above, this switches it
+          # into coverage mode.
+          XDEBUG_MODE: coverage
+        run: composer test
 
       - name: Code Quality (PHPStan)
         run: |

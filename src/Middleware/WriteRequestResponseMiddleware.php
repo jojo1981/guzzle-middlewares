@@ -10,8 +10,8 @@
 namespace Jojo1981\GuzzleMiddlewares\Middleware;
 
 use Closure;
-use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Promise\RejectedPromise;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\HttpMessageFormatterInterface;
 use Jojo1981\GuzzleMiddlewares\WriteRequestResponse\RequestResponseWriterInterface;
 use Psr\Http\Message\RequestInterface;
@@ -102,7 +102,7 @@ final class WriteRequestResponseMiddleware
             );
             $this->writeContent($content);
 
-            return Create::rejectionFor($reason);
+            return new RejectedPromise($reason);
         };
     }
 
